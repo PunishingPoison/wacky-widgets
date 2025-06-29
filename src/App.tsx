@@ -203,7 +203,7 @@ function App() {
             <p className="text-gray-700 text-xs">
               🎭 New: 20 chaotic widgets including Emotional Cheese Graters, AI Roasters & More!
             </p>
-            <p className="text-gray-600 text-xs mt-3 border-t border-gray-800 pt-3">
+            <p className="text-white text-lg font-bold mt-4 border-t border-gray-800 pt-4">
               Made by V C Mohit Rao
             </p>
           </div>
