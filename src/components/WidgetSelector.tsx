@@ -67,6 +67,10 @@ export const WidgetSelector: React.FC<WidgetSelectorProps> = ({ onWidgetSelect }
     }
   };
 
+  const isSpecialWidget = (widgetType: string) => {
+    return widgetType === 'useless-ai-chatbot';
+  };
+
   if (!isOpen) {
     return (
       <button
@@ -102,16 +106,42 @@ export const WidgetSelector: React.FC<WidgetSelectorProps> = ({ onWidgetSelect }
               <button
                 key={widget.type}
                 onClick={() => handleWidgetSelect(widget.type)}
-                className="p-4 bg-gray-900 border border-gray-700 rounded-lg text-left
-                           hover:border-white hover:bg-gray-800 transition-all duration-300
-                           transform hover:scale-105 active:scale-95"
+                className={`p-4 rounded-lg text-left transition-all duration-300 transform hover:scale-105 active:scale-95 relative ${
+                  isSpecialWidget(widget.type)
+                    ? 'bg-gradient-to-br from-yellow-600 via-yellow-500 to-yellow-400 border-2 border-yellow-300 text-black shadow-lg shadow-yellow-500/50'
+                    : 'bg-gray-900 border border-gray-700 hover:border-white hover:bg-gray-800'
+                }`}
               >
-                <h3 className="text-white font-bold text-sm mb-2 line-clamp-2">
+                {isSpecialWidget(widget.type) && (
+                  <>
+                    {/* Golden sparkle effects */}
+                    <div className="absolute -top-1 -right-1 text-yellow-300 text-lg animate-pulse">✨</div>
+                    <div className="absolute -bottom-1 -left-1 text-yellow-300 text-lg animate-pulse" style={{ animationDelay: '0.5s' }}>⭐</div>
+                    <div className="absolute top-1/2 -right-1 text-yellow-300 text-sm animate-pulse" style={{ animationDelay: '1s' }}>💫</div>
+                    
+                    {/* Featured badge */}
+                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded-full border border-yellow-300">
+                      🤖 FEATURED
+                    </div>
+                  </>
+                )}
+                
+                <h3 className={`font-bold text-sm mb-2 line-clamp-2 ${
+                  isSpecialWidget(widget.type) ? 'text-black' : 'text-white'
+                }`}>
                   {widget.title}
                 </h3>
-                <p className="text-gray-400 text-xs leading-relaxed line-clamp-3">
+                <p className={`text-xs leading-relaxed line-clamp-3 ${
+                  isSpecialWidget(widget.type) ? 'text-gray-800' : 'text-gray-400'
+                }`}>
                   {widget.description}
                 </p>
+                
+                {isSpecialWidget(widget.type) && (
+                  <div className="mt-2 text-xs font-bold text-yellow-800 bg-yellow-200 px-2 py-1 rounded">
+                    🔥 NEW AI POWERED
+                  </div>
+                )}
               </button>
             ))}
           </div>
@@ -121,6 +151,9 @@ export const WidgetSelector: React.FC<WidgetSelectorProps> = ({ onWidgetSelect }
         <div className="p-4 border-t border-gray-700 text-center">
           <p className="text-gray-500 text-sm">
             {AVAILABLE_WIDGETS.length} widgets of pure digital chaos available
+          </p>
+          <p className="text-yellow-400 text-xs mt-1 font-bold">
+            ✨ Featured: AI-Powered Useless Chatbot - Now with Real Artificial Unintelligence!
           </p>
         </div>
       </div>
