@@ -201,7 +201,7 @@ function App() {
               Extended Edition: Now with 36 ways to waste your time
             </p>
             <p className="text-gray-700 text-xs">
-              🎭 New: 20 chaotic widgets including Emotional Cheese Graters, AI Roasters & More!
+              🎭 New: 20 chaotic widgets including Potato of Destiny, Broccoli Life Coach & more!
             </p>
             <p className="text-white text-lg font-bold mt-4 border-t border-gray-800 pt-4">
               Made by V C Mohit Rao
