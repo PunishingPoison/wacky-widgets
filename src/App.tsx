@@ -188,9 +188,23 @@ function App() {
               <span>GitHub</span>
             </a>
             <div className="w-px h-4 bg-gray-700"></div>
-            <div className="flex items-center space-x-2 text-gray-400">
-              <Zap className="w-5 h-5" />
-              <span>Built with Bolt</span>
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-2 text-gray-400">
+                <Zap className="w-5 h-5" />
+                <span>Built with Bolt</span>
+              </div>
+              <a 
+                href="https://github.com/kickiniteasy/bolt-hackathon-badge"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition-transform duration-300"
+              >
+                <img 
+                  src="https://raw.githubusercontent.com/kickiniteasy/bolt-hackathon-badge/main/assets/bolt-badge-white.png"
+                  alt="Bolt Hackathon Badge"
+                  className="h-8 w-auto"
+                />
+              </a>
             </div>
           </div>
           <div className="space-y-1">
