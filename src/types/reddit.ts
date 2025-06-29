@@ -59,7 +59,8 @@ export type WidgetType =
   | 'broccoli-life-coach'
   | 'honest-mirror'
   | 'pigeon-sandwich-rater'
-  | 'life-achievement-unlocked';
+  | 'life-achievement-unlocked'
+  | 'useless-ai-chatbot';
 
 export interface Widget {
   id: string;

@@ -41,6 +41,7 @@ import { BroccoliLifeCoachWidget } from './widgets/BroccoliLifeCoachWidget';
 import { HonestMirrorWidget } from './widgets/HonestMirrorWidget';
 import { PigeonSandwichRaterWidget } from './widgets/PigeonSandwichRaterWidget';
 import { LifeAchievementUnlockedWidget } from './widgets/LifeAchievementUnlockedWidget';
+import { UselessAiChatbotWidget } from './widgets/UselessAiChatbotWidget';
 
 interface WidgetContainerProps {
   widget: Widget;
@@ -138,6 +139,8 @@ export const WidgetContainer: React.FC<WidgetContainerProps> = ({ widget, isLoad
         return <PigeonSandwichRaterWidget widget={widget} />;
       case 'life-achievement-unlocked':
         return <LifeAchievementUnlockedWidget widget={widget} />;
+      case 'useless-ai-chatbot':
+        return <UselessAiChatbotWidget widget={widget} />;
       
       default:
         return <GenericWidget widget={widget} />;

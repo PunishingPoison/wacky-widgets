@@ -178,6 +178,11 @@ const STANDALONE_WIDGETS: Array<{ type: WidgetType; title: string; content: stri
     type: 'life-achievement-unlocked',
     title: 'Random Life Achievement Unlocked!',
     content: 'Celebrating your most mundane accomplishments!'
+  },
+  {
+    type: 'useless-ai-chatbot',
+    title: 'Absolutely Useless AI Chatbot',
+    content: 'Chat with an AI that specializes in being completely unhelpful!'
   }
 ];
 

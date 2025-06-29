@@ -83,7 +83,7 @@ function App() {
     console.log('%c🎲 Welcome to WackyWidgets Extended! 🎲', 'color: #fff; background: #000; padding: 10px; font-size: 16px; font-weight: bold;');
     console.log('%cTry shuffling widgets to unlock hidden messages!', 'color: #888; font-style: italic;');
     console.log('%cEaster egg locations: 100 clicks, 50 shuffles, 25 widgets viewed', 'color: #666; font-size: 12px;');
-    console.log('%c🎭 New chaos widgets added: 20+ new ways to waste your time!', 'color: #0ff; background: #000; padding: 5px;');
+    console.log('%c🎭 New chaos widgets added: 21+ new ways to waste your time!', 'color: #0ff; background: #000; padding: 5px;');
     
     // Special console messages based on usage
     if (shuffleCount >= 50) {
@@ -119,7 +119,7 @@ function App() {
           The internet's most gloriously pointless playground
         </p>
         <p className="text-sm text-gray-600 mt-2">
-          Now with 36 new ways to question your life choices
+          Now with 37 new ways to question your life choices
         </p>
         <div className="w-24 h-px bg-white mx-auto mt-6"></div>
       </header>
@@ -198,10 +198,10 @@ function App() {
               Powered by Reddit's finest chaos • Made with ❤️ and questionable decisions
             </p>
             <p className="text-gray-700 text-xs">
-              Extended Edition: Now with 36 ways to waste your time
+              Extended Edition: Now with 37 ways to waste your time
             </p>
             <p className="text-gray-700 text-xs">
-              🎭 New: 20 chaotic widgets including Potato of Destiny, Broccoli Life Coach & more!
+              🎭 New: 21 chaotic widgets including Potato of Destiny, Broccoli Life Coach & more!
             </p>
             <p className="text-white text-lg font-bold mt-4 border-t border-gray-800 pt-4">
               Made by V C Mohit Rao

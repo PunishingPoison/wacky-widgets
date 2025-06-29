@@ -46,7 +46,8 @@ const AVAILABLE_WIDGETS = [
   { type: 'broccoli-life-coach', title: 'Broccoli Life Coach', description: 'Nutritional wisdom meets questionable life advice!' },
   { type: 'honest-mirror', title: 'Alarmingly Honest Mirror Widget', description: 'Reflections that tell you what you need to hear!' },
   { type: 'pigeon-sandwich-rater', title: 'Pigeon That Rates Sandwiches', description: 'Professional sandwich criticism from a bird brain!' },
-  { type: 'life-achievement-unlocked', title: 'Random Life Achievement Unlocked!', description: 'Celebrating your most mundane accomplishments!' }
+  { type: 'life-achievement-unlocked', title: 'Random Life Achievement Unlocked!', description: 'Celebrating your most mundane accomplishments!' },
+  { type: 'useless-ai-chatbot', title: 'Absolutely Useless AI Chatbot', description: 'Chat with an AI that specializes in being completely unhelpful!' }
 ];
 
 export const WidgetSelector: React.FC<WidgetSelectorProps> = ({ onWidgetSelect }) => {
