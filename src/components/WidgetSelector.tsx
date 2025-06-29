@@ -8,6 +8,9 @@ interface WidgetSelectorProps {
 }
 
 const AVAILABLE_WIDGETS = [
+  // Featured AI Chatbot at the top
+  { type: 'useless-ai-chatbot', title: 'Absolutely Useless AI Chatbot', description: 'Chat with an AI that specializes in being completely unhelpful!' },
+  
   // Original widgets
   { type: 'click-counter', title: 'The Absolutely Pointless Click Counter', description: 'Click me and watch numbers go up for no reason whatsoever!' },
   { type: 'spinner', title: 'The Maybe Machine', description: 'Spin to get a definitely maybe answer to life\'s questions!' },
@@ -46,8 +49,7 @@ const AVAILABLE_WIDGETS = [
   { type: 'broccoli-life-coach', title: 'Broccoli Life Coach', description: 'Nutritional wisdom meets questionable life advice!' },
   { type: 'honest-mirror', title: 'Alarmingly Honest Mirror Widget', description: 'Reflections that tell you what you need to hear!' },
   { type: 'pigeon-sandwich-rater', title: 'Pigeon That Rates Sandwiches', description: 'Professional sandwich criticism from a bird brain!' },
-  { type: 'life-achievement-unlocked', title: 'Random Life Achievement Unlocked!', description: 'Celebrating your most mundane accomplishments!' },
-  { type: 'useless-ai-chatbot', title: 'Absolutely Useless AI Chatbot', description: 'Chat with an AI that specializes in being completely unhelpful!' }
+  { type: 'life-achievement-unlocked', title: 'Random Life Achievement Unlocked!', description: 'Celebrating your most mundane accomplishments!' }
 ];
 
 export const WidgetSelector: React.FC<WidgetSelectorProps> = ({ onWidgetSelect }) => {
