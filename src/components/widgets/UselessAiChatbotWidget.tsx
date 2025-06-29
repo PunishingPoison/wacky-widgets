@@ -93,7 +93,7 @@ IMPORTANT: Actually respond to what they specifically wrote, not generic respons
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
         headers: {
-          'Authorization': 'Bearer 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',
+          'Authorization': 'Bearer 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',
           'Content-Type': 'application/json',
           'HTTP-Referer': window.location.origin,
           'X-Title': 'WackyWidgets Useless AI'
