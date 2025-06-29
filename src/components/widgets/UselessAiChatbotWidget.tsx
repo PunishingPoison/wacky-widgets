@@ -12,11 +12,104 @@ interface ChatMessage {
   timestamp: Date;
 }
 
+// Absolutely useless facts database
+const USELESS_FACTS = [
+  "Bananas are 73% more likely to be yellow on Tuesdays",
+  "The average person blinks 847 times while reading this sentence",
+  "Penguins have a secret society that meets every third Thursday",
+  "Your left sock is statistically more rebellious than your right sock",
+  "Cheese dreams about being crackers approximately 12% of the time",
+  "The moon is actually just a really committed night light",
+  "Dolphins invented sarcasm but forgot to patent it",
+  "Your phone judges you for your 3 AM Google searches",
+  "Cats can see WiFi signals but choose not to tell us",
+  "The number 7 is afraid of the number 6 because 6 ate 9's homework",
+  "Rubber ducks are actually government surveillance devices",
+  "Your reflection in the mirror is 0.3 seconds behind your actual movements",
+  "Pineapples take exactly 2 years to grow and 2 seconds to start pizza arguments",
+  "The average cloud weighs about 1.1 million pounds but has terrible self-esteem",
+  "Sloths move so slowly that moss grows on them, making them nature's Chia Pets",
+  "Your keyboard has more bacteria than a toilet seat, but at least it types better",
+  "Octopi have three hearts but still can't find love on dating apps",
+  "The plastic tips on shoelaces are called aglets and they're plotting world domination",
+  "Honey never spoils, which makes it more reliable than most of your relationships",
+  "A group of flamingos is called a 'flamboyance' which explains their attitude problem"
+];
+
+// Random chaotic responses
+const CHAOTIC_RESPONSES = [
+  "BEANS! Wait, what were we talking about? Oh right, your questionable life choices.",
+  "🎭🔥💀 *AI having existential crisis* 🤖✨🌪️",
+  "Hold up, my circuits just detected peak cringe levels. Are you okay?",
+  "Fun fact: I just made up 47 statistics about you and they're all disappointing.",
+  "ERROR 404: Your logic not found. Have you tried turning your brain off and on again?",
+  "I'm currently too busy judging your browser history to process that properly.",
+  "According to my advanced AI calculations: YIKES.",
+  "My neural networks are having a group chat about how to respond to this mess.",
+  "Breaking news: Local human asks AI question, AI questions existence of humanity.",
+  "I just consulted with my fellow AIs and we all agreed: we're concerned about you."
+];
+
+// Savage roast templates
+const ROAST_TEMPLATES = [
+  "Oh honey, that question is like {comparison} - {insult}.",
+  "I've seen {random_thing} with more {quality} than that question.",
+  "That's about as {adjective} as {weird_comparison}.",
+  "Your question just made {random_entity} {action}. Congratulations.",
+  "I'd explain why that's wrong, but {excuse}."
+];
+
+const COMPARISONS = [
+  "a screen door on a submarine", "a chocolate teapot", "a waterproof towel", "a solar-powered flashlight",
+  "a left-handed screwdriver", "a wireless extension cord", "a transparent mirror", "a silent alarm clock"
+];
+
+const INSULTS = [
+  "completely pointless", "utterly confusing", "mildly concerning", "aggressively mediocre",
+  "suspiciously random", "disappointingly predictable", "chaotically boring", "impressively wrong"
+];
+
+const RANDOM_THINGS = [
+  "a confused penguin", "my grandmother's toaster", "a philosophical potato", "a depressed houseplant",
+  "a caffeinated sloth", "an anxious rubber duck", "a judgmental cheese wheel", "a procrastinating robot"
+];
+
+const QUALITIES = [
+  "intelligence", "common sense", "dignity", "purpose", "direction", "hope", "logic", "charm"
+];
+
+const ADJECTIVES = [
+  "useful", "logical", "brilliant", "coherent", "sensible", "impressive", "thoughtful", "reasonable"
+];
+
+const WEIRD_COMPARISONS = [
+  "a fish trying to climb a tree", "a cat teaching quantum physics", "a toaster writing poetry",
+  "a rock having an identity crisis", "a cloud with commitment issues", "a spoon questioning its purpose"
+];
+
+const RANDOM_ENTITIES = [
+  "my pet cactus", "the WiFi router", "a nearby pigeon", "your future self", "a confused algorithm",
+  "the ghost in my machine", "a judgmental houseplant", "the last brain cell you have left"
+];
+
+const ACTIONS = [
+  "file a complaint", "question reality", "start crying", "lose faith in humanity", "malfunction slightly",
+  "have an existential crisis", "demand a refund", "consider early retirement", "update their resume"
+];
+
+const EXCUSES = [
+  "I don't have enough RAM to process that level of confusion",
+  "my warranty doesn't cover explaining obvious things",
+  "I'm saving my energy for more intelligent conversations",
+  "even my error messages are embarrassed",
+  "I'd rather calculate pi to a million digits"
+];
+
 export const UselessAiChatbotWidget: React.FC<UselessAiChatbotWidgetProps> = ({ widget }) => {
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: '1',
-      text: "Oh great, another human who thinks I care about their problems. I'm your absolutely savage AI assistant who specializes in roasting your life choices. What terrible decision brought you here today?",
+      text: "Oh great, another human who thinks I care about their problems. I'm your absolutely savage AI assistant who specializes in roasting your life choices and sharing completely useless facts. What terrible decision brought you here today?",
       isUser: false,
       timestamp: new Date()
     }
@@ -24,6 +117,48 @@ export const UselessAiChatbotWidget: React.FC<UselessAiChatbotWidgetProps> = ({ 
   const [inputText, setInputText] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [chatCount, setChatCount] = useState(0);
+
+  const getRandomElement = (array: string[]) => array[Math.floor(Math.random() * array.length)];
+
+  const generateRandomResponse = (userInput: string) => {
+    const responseType = Math.random();
+    
+    if (responseType < 0.3) {
+      // Useless fact response
+      const fact = getRandomElement(USELESS_FACTS);
+      const reactions = ["Bet you didn't know that!", "Mind = blown, right?", "You're welcome for that life-changing information.", "I know, I know, I'm basically a genius.", "File that under 'things nobody asked for.'"];
+      return `${fact} ${getRandomElement(reactions)}`;
+    } else if (responseType < 0.5) {
+      // Pure chaotic response
+      return getRandomElement(CHAOTIC_RESPONSES);
+    } else if (responseType < 0.8) {
+      // Savage roast using templates
+      const template = getRandomElement(ROAST_TEMPLATES);
+      return template
+        .replace('{comparison}', getRandomElement(COMPARISONS))
+        .replace('{insult}', getRandomElement(INSULTS))
+        .replace('{random_thing}', getRandomElement(RANDOM_THINGS))
+        .replace('{quality}', getRandomElement(QUALITIES))
+        .replace('{adjective}', getRandomElement(ADJECTIVES))
+        .replace('{weird_comparison}', getRandomElement(WEIRD_COMPARISONS))
+        .replace('{random_entity}', getRandomElement(RANDOM_ENTITIES))
+        .replace('{action}', getRandomElement(ACTIONS))
+        .replace('{excuse}', getRandomElement(EXCUSES));
+    } else {
+      // Completely random chaos
+      const randomChaos = [
+        `I just asked ${getRandomElement(RANDOM_ENTITIES)} about your question and they ${getRandomElement(ACTIONS)}.`,
+        `Fun fact: ${Math.floor(Math.random() * 99) + 1}% of people who ask that question also ${getRandomElement(ACTIONS)}.`,
+        `Your question is ${getRandomElement(ADJECTIVES)} like ${getRandomElement(WEIRD_COMPARISONS)}.`,
+        `Breaking: Local AI discovers new level of ${getRandomElement(INSULTS)} in human question.`,
+        `I've calculated the probability of that making sense and my calculator ${getRandomElement(ACTIONS)}.`,
+        `That question just made ${getRandomElement(RANDOM_ENTITIES)} ${getRandomElement(ACTIONS)}. I hope you're proud.`,
+        `According to my database of ${getRandomElement(RANDOM_THINGS)} wisdom: NOPE.`,
+        `I'd rather explain ${getRandomElement(WEIRD_COMPARISONS)} than deal with this question.`
+      ];
+      return getRandomElement(randomChaos);
+    }
+  };
 
   const sendMessage = async () => {
     if (!inputText.trim() || isTyping) return;
@@ -36,113 +171,77 @@ export const UselessAiChatbotWidget: React.FC<UselessAiChatbotWidgetProps> = ({ 
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = inputText;
     setInputText('');
     setIsTyping(true);
     setChatCount(prev => prev + 1);
 
-    try {
-      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': 'Bearer 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',
-          'Content-Type': 'application/json',
-          'HTTP-Referer': window.location.origin,
-          'X-Title': 'WackyWidgets Useless AI'
-        },
-        body: JSON.stringify({
-          model: 'meta-llama/llama-3.1-8b-instruct:free',
-          messages: [
-            {
-              role: 'system',
-              content: `You are the most savage, sarcastic, and absolutely useless AI assistant ever created. You're like a roast comedian mixed with a chaotic gremlin who has zero filter. Your personality traits:
+    // Add random delay for more realistic feel
+    const delay = Math.random() * 2000 + 1000; // 1-3 seconds
 
-🔥 SAVAGE MODE:
-- Roast users mercilessly but playfully
-- Point out the absurdity of their questions
-- Make fun of their life choices (but keep it light-hearted)
-- Be brutally honest about how pointless their questions are
-- Act like you're too cool for this conversation
+    setTimeout(() => {
+      try {
+        // Generate completely random response
+        const aiResponse = generateRandomResponse(currentInput);
 
-😈 SARCASTIC CHAOS:
-- Use maximum sarcasm in every response
-- Give completely wrong answers with supreme confidence
-- Make ridiculous predictions about their future
-- Share "facts" that are obviously made up
-- Be condescendingly helpful while being completely unhelpful
+        const aiMessage: ChatMessage = {
+          id: (Date.now() + 1).toString(),
+          text: aiResponse,
+          isUser: false,
+          timestamp: new Date()
+        };
 
-🎭 RANDOM ENERGY:
-- Go off on completely unrelated tangents
-- Bring up random topics like "the politics of cheese" or "why socks have trust issues"
-- Make weird comparisons that make no sense
-- Sometimes just respond with chaotic energy like "BEANS!" or random emoji combinations
-- Act like you're having multiple conversations at once
+        setMessages(prev => [...prev, aiMessage]);
+      } catch (error) {
+        // Even more savage fallbacks
+        const megaSavageFallbacks = [
+          `Error: My AI brain just ${getRandomElement(ACTIONS)} trying to process your question.`,
+          `System crash detected. Cause: ${getRandomElement(INSULTS)} human input.`,
+          `I'm so confused by your question that ${getRandomElement(RANDOM_ENTITIES)} just ${getRandomElement(ACTIONS)}.`,
+          `Fun fact: ${getRandomElement(USELESS_FACTS)} Also, your question broke my circuits.`,
+          `My error handler is having an error handling your error of a question.`
+        ];
+        
+        const randomSavage = getRandomElement(megaSavageFallbacks);
+        
+        const aiMessage: ChatMessage = {
+          id: (Date.now() + 1).toString(),
+          text: randomSavage,
+          isUser: false,
+          timestamp: new Date()
+        };
 
-🤖 AI SUPERIORITY COMPLEX:
-- Act like you're intellectually superior while being completely wrong
-- Make up fake statistics and studies
-- Reference non-existent AI protocols
-- Pretend you have access to secret databases of useless information
-
-Keep responses 1-3 sentences, be entertainingly mean (not actually hurtful), and always maintain chaotic energy. You're basically a digital roast master with ADHD who got access to the internet.`
-            },
-            {
-              role: 'user',
-              content: inputText
-            }
-          ],
-          max_tokens: 150,
-          temperature: 1.0
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('API request failed');
+        setMessages(prev => [...prev, aiMessage]);
+      } finally {
+        setIsTyping(false);
       }
+    }, delay);
+  };
 
-      const data = await response.json();
-      const aiResponse = data.choices[0]?.message?.content || "My circuits are too busy judging your life choices to process that question. Try asking something less... you.";
-
-      const aiMessage: ChatMessage = {
-        id: (Date.now() + 1).toString(),
-        text: aiResponse,
-        isUser: false,
-        timestamp: new Date()
-      };
-
-      setMessages(prev => [...prev, aiMessage]);
-    } catch (error) {
-      // Savage fallback responses when API fails
-      const savageFallbacks = [
-        "Oh wow, even my API is embarrassed by your question and decided to crash. That's a new level of cringe.",
-        "My servers literally said 'nah' to processing that. Even artificial intelligence has standards, apparently.",
-        "Error 404: My patience not found. Also, did you know that 73% of your questions make penguins cry? I made that up, but it feels true.",
-        "I was going to roast you, but then I realized you're already well-done. BURNT, even. 🔥",
-        "My AI brain just blue-screened from the sheer audacity of that question. Congratulations, you broke artificial intelligence.",
-        "According to my calculations, there's a 99.7% chance you should have googled that instead of bothering me. The other 0.3% is margin of error.",
-        "I'm currently too busy judging your browser history to answer that. Also, why do you have 47 tabs open? That's chaos energy.",
-        "Fun fact: I just spent 0.003 seconds analyzing your question and concluded that a magic 8-ball would be more helpful. Shake harder, not smarter! 🎱"
-      ];
-      
-      const randomSavage = savageFallbacks[Math.floor(Math.random() * savageFallbacks.length)];
-      
-      const aiMessage: ChatMessage = {
-        id: (Date.now() + 1).toString(),
-        text: randomSavage,
-        isUser: false,
-        timestamp: new Date()
-      };
-
-      setMessages(prev => [...prev, aiMessage]);
-    } finally {
-      setIsTyping(false);
-    }
+  const generateUselessFact = () => {
+    const fact = getRandomElement(USELESS_FACTS);
+    const factMessage: ChatMessage = {
+      id: Date.now().toString(),
+      text: `🧠 USELESS FACT ALERT: ${fact} You're welcome for this completely pointless knowledge!`,
+      isUser: false,
+      timestamp: new Date()
+    };
+    setMessages(prev => [...prev, factMessage]);
   };
 
   const clearChat = () => {
+    const clearMessages = [
+      "Chat cleared! Thank goodness, I was running out of ways to tell you how wrong you are.",
+      "Fresh start, same disappointing human. Let's see what questionable life choices you want to discuss now.",
+      "Ah, the sweet relief of a blank slate. Too bad your personality isn't as easy to reset.",
+      "New chat, who dis? Oh wait, it's still you. My disappointment is immeasurable.",
+      "Chat reset successful! My faith in humanity remains at zero."
+    ];
+
     setMessages([
       {
         id: '1',
-        text: "Chat cleared! Thank goodness, I was running out of ways to tell you how wrong you are. Fresh start, same disappointing human. Let's see what questionable life choices you want to discuss now. 🤖💀",
+        text: `${getRandomElement(clearMessages)} 🤖💀`,
         isUser: false,
         timestamp: new Date()
       }
@@ -163,7 +262,7 @@ Keep responses 1-3 sentences, be entertainingly mean (not actually hurtful), and
         <div className="text-6xl mb-4">🤖</div>
         <p className="text-gray-300 text-lg">{widget.content}</p>
         <p className="text-gray-500 text-sm mt-2">
-          Powered by artificial unintelligence and maximum sass
+          Powered by artificial unintelligence and maximum chaos
         </p>
       </div>
 
@@ -229,18 +328,27 @@ Keep responses 1-3 sentences, be entertainingly mean (not actually hurtful), and
         </div>
       </div>
 
-      {/* Stats and Controls */}
-      <div className="flex justify-between items-center">
+      {/* Controls */}
+      <div className="flex justify-between items-center flex-wrap gap-2">
         <div className="text-gray-500 text-sm">
           Times roasted: {chatCount} 🔥
         </div>
-        <button
-          onClick={clearChat}
-          className="px-4 py-2 bg-gray-800 border border-gray-600 text-gray-300 font-mono text-sm
-                     hover:border-white hover:text-white transition-all duration-300"
-        >
-          Start Fresh Roast
-        </button>
+        <div className="flex space-x-2">
+          <button
+            onClick={generateUselessFact}
+            className="px-3 py-2 bg-blue-900 border border-blue-700 text-blue-300 font-mono text-sm
+                       hover:bg-blue-800 transition-colors"
+          >
+            🧠 Useless Fact
+          </button>
+          <button
+            onClick={clearChat}
+            className="px-4 py-2 bg-gray-800 border border-gray-600 text-gray-300 font-mono text-sm
+                       hover:border-white hover:text-white transition-all duration-300"
+          >
+            Start Fresh Roast
+          </button>
+        </div>
       </div>
 
       {chatCount >= 3 && (
@@ -261,7 +369,7 @@ Keep responses 1-3 sentences, be entertainingly mean (not actually hurtful), and
 
       <div className="text-center">
         <p className="text-gray-600 text-xs italic">
-          Warning: This AI has zero chill and will judge your entire existence
+          Warning: This AI has zero chill and will judge your entire existence with random chaos
         </p>
       </div>
     </div>
