@@ -114,6 +114,9 @@ IMPORTANT: Actually respond to what they specifically wrote, not generic respons
       });
 
       if (!response.ok) {
+        if (response.status === 429) {
+          throw new Error('RateLimitExceeded');
+        }
         throw new Error(`API Error: ${response.status}`);
       }
 
@@ -181,12 +184,19 @@ IMPORTANT: Actually respond to what they specifically wrote, not generic respons
       } catch (error) {
         console.error('AI API failed:', error);
         
-        // Use savage fallback that still references their input
-        const fallbackResponse = generateFallbackResponse(currentInput);
+        let responseText: string;
+        
+        // Check if it's a rate limit error
+        if (error instanceof Error && error.message === 'RateLimitExceeded') {
+          responseText = "🚨 RATE LIMIT EXCEEDED! 🚨\n\nWow, you've been chatting so much that even the AI servers are tired of you! The API is telling us to slow down because apparently you're too enthusiastic about getting roasted. Wait a moment and try again, you absolute chatterbox! 😤\n\nFun fact: You've officially annoyed a computer. That's a special kind of talent. 🏆";
+        } else {
+          // Use savage fallback that still references their input
+          responseText = generateFallbackResponse(currentInput);
+        }
         
         const aiMessage: ChatMessage = {
           id: (Date.now() + 1).toString(),
-          text: fallbackResponse,
+          text: responseText,
           isUser: false,
           timestamp: new Date()
         };
@@ -269,7 +279,7 @@ IMPORTANT: Actually respond to what they specifically wrote, not generic respons
                     : 'bg-red-900 text-red-100 border border-red-700'
                 }`}
               >
-                <p className="text-sm leading-relaxed">{message.text}</p>
+                <p className="text-sm leading-relaxed whitespace-pre-line">{message.text}</p>
                 <p className="text-xs opacity-50 mt-1">
                   {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                 </p>
