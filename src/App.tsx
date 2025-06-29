@@ -194,15 +194,15 @@ function App() {
                 <span>Built with Bolt</span>
               </div>
               <a 
-                href="https://github.com/kickiniteasy/bolt-hackathon-badge"
+                href="https://bolt.new"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:scale-110 transition-transform duration-300"
               >
                 <img 
-                  src="https://raw.githubusercontent.com/kickiniteasy/bolt-hackathon-badge/main/assets/bolt-badge-white.png"
-                  alt="Bolt Hackathon Badge"
-                  className="h-8 w-auto"
+                  src="/image.png"
+                  alt="Bolt Badge"
+                  className="h-12 w-auto"
                 />
               </a>
             </div>
