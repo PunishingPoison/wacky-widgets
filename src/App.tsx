@@ -179,7 +179,7 @@ function App() {
         <div className="max-w-4xl mx-auto space-y-4">
           <div className="flex justify-center items-center space-x-6">
             <a 
-              href="https://github.com" 
+              href="https://github.com/PunishingPoison/wacky-widgets" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-300"
